@@ -1,0 +1,133 @@
+/* Variables - Coincidiendo con login.css */
+:root {
+    --primary-color: #283b80;
+    --secondary-color: #4299e1;
+    --nav-bg: rgba(255, 255, 255, 0.98);
+    --nav-text: #2d3748;
+    --nav-hover: #4299e1;
+    --nav-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header y navegación */
+.guest-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.guest-nav {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--nav-shadow);
+    padding: 0.75rem 1.5rem;
+    transition: var(--transition);
+}
+
+.guest-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.guest-nav__list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.guest-nav__item {
+    margin: 0;
+}
+
+.guest-nav__link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: calc(var(--border-radius) * 0.5);
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.guest-nav__link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.guest-nav__link:active {
+    transform: translateY(0);
+}
+
+/* Ajuste del contenido principal */
+.guest-main {
+    padding-top: 0.1rem;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .guest-header {
+        left: 0;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .guest-nav {
+        border-radius: var(--border-radius);
+        margin: 0 1rem;
+    }
+
+    .guest-nav__list {
+        justify-content: center;
+    }
+}
+
+/* Soporte para dispositivos con notch */
+@supports (padding-top: env(safe-area-inset-top)) {
+    .guest-header {
+        padding-top: max(1rem, env(safe-area-inset-top));
+    }
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .guest-nav {
+        background: rgba(45, 55, 72, 0.2);
+    }
+
+    .guest-nav:hover {
+        background: rgba(45, 55, 72, 0.25);
+    }
+
+    .guest-nav__link {
+        color: #e2e8f0;
+    }
+
+    .guest-nav__link:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .guest-nav,
+    .guest-nav__link {
+        transition: none;
+    }
+}
+
+/* Estados de hover para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+    .guest-nav__link:hover {
+        transform: none;
+    }
+}

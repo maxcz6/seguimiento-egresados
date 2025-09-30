@@ -1,0 +1,386 @@
+/* Estilos para el navbar de administración con un diseño futurista */
+        /* Reset básico para eliminar estilos por defecto */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos del body con gradiente futurista */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Navbar principal para escritorio - fijo a la izquierda */
+        .navvarA {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30%; /* Cambio de width fijo a porcentaje */
+            min-width: 250px; /* Ancho mínimo para evitar que sea demasiado estrecho */
+            max-width: 350px; /* Ancho máximo para pantallas grandes */
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            border-right: 1px solid rgba(0, 255, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease; /* Agregar transición suave */
+        }
+
+        /* Contenedor principal del navbar */
+        .navvarA__container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 1.5rem;
+        }
+
+        /* Sección del logo */
+        .navvarA__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        /* Icono del logo con gradiente */
+        .navvarA__logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Texto del logo con gradiente */
+        .navvarA__logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Lista de navegación principal */
+        .navvarA__nav {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            gap: 0.7rem;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 5px;
+        }
+
+        /* Enlaces de navegación con efectos hover */
+        .navvarA__nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            display: block;
+            width: 100%;
+            font-size: 0.95rem;
+        }
+
+        /* Efecto de fondo en hover usando pseudo-elemento */
+        .navvarA__nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Activar fondo en hover */
+        .navvarA__nav-link:hover::before {
+            opacity: 1;
+        }
+
+        /* Estilos para la barra de desplazamiento en navegadores webkit */
+        .navvarA__nav::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .navvarA__nav::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .navvarA__nav::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 10px;
+        }
+        
+        .navvarA__nav::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+        }
+
+        /* Efectos de hover: color, borde, sombra y desplazamiento */
+        .navvarA__nav-link:hover {
+            color: #00ffff;
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Botón hamburguesa para móviles - MOVIDO FUERA DEL NAVBAR */
+        .navvarA__hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1002; /* Aumentar z-index para estar sobre el navbar */
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 12px;
+            background: rgba(10, 10, 10, 0.9);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+/* ====================================Efecto DE MENU HAMBURGESA ========================================= */
+        /* Líneas del hamburguesa con gradiente */
+        .navvarA__hamburger span {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        /* Animación del hamburguesa cuando está activo */
+        .navvarA__hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .navvarA__hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navvarA__hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Menú móvil deslizable */
+        .navvarA__mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.3);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Mostrar menú móvil cuando está activo */
+        .navvarA__mobile-menu.active {
+            left: 0;
+        }
+
+        /* Lista de navegación móvil */
+        .navvarA__mobile-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Enlaces de navegación móvil */
+        .navvarA__mobile-nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            display: block;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Efectos hover en enlaces móviles */
+        .navvarA__mobile-nav-link:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            /* Ocultar navbar de escritorio */
+            .navvarA {
+                display: none;
+            }
+
+            /* Mostrar botón hamburguesa */
+            .navvarA__hamburger {
+                display: flex;
+            }
+        }
+
+        /* Media query para pantallas grandes */
+        @media (min-width: 769px) {
+            /* Ocultar menú móvil */
+            .navvarA__mobile-menu {
+                display: none;
+            }
+
+            /* Ocultar botón hamburguesa */
+            .navvarA__hamburger {
+                display: none;
+            }
+        }
+
+        /* Contenido principal */
+        .content {
+            margin-left: 30%; /* Coincidir con el ancho del navbar */
+            padding: 2rem;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Ajustar contenido para móviles */
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+                padding: 80px 2rem 2rem;
+            }
+        }
+
+        /* Media queries actualizados */
+        @media (max-width: 1200px) {
+            .navvarA {
+                width: 300px; /* Ancho fijo para pantallas medianas */
+            }
+            .content {
+                margin-left: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navvarA {
+                width: 100%; /* Ancho completo para móviles */
+                transform: translateX(-100%); /* Ocultar fuera de la pantalla */
+                display: block; /* Mantener visible pero transformado */
+            }
+            
+            .navvarA.active {
+                transform: translateX(0); /* Mostrar al activar */
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 80px 2rem 2rem;
+            }
+
+            /* Ajustar el menú móvil */
+            .navvarA__mobile-menu {
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95); /* Fondo más oscuro para mejor legibilidad */
+            }
+        }
+
+        /* Ajustes adicionales para el menú hamburguesa */
+        .navvarA__hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1002; /* Aumentar z-index para estar sobre el navbar */
+            background: rgba(10, 10, 10, 0.9);
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        /* Ajustes para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .navvarA {
+                min-width: unset; /* Eliminar ancho mínimo en móviles */
+            }
+            
+            .navvarA__container {
+                padding: 1rem;
+            }
+
+            .navvarA__logo-text {
+                font-size: 1.2rem;
+            }
+
+            .navvarA__nav-link {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+
+/* ================== Accesos Rápidos ================== */
+.quick-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quick-link {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Fondo sutil con gradiente */
+.quick-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.08), rgba(255, 0, 255, 0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quick-link:hover::before {
+    opacity: 1;
+}
+
+/* Hover con efectos similares al navbar */
+.quick-link:hover {
+    color: #00ffff;
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    transform: translateX(5px);
+}
