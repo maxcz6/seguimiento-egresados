@@ -30,7 +30,7 @@ class RoleMiddleware
     private function redirectBasedOnRole($user)
     {
         return match ($user->rol) {
-            'admin'    => redirect()->route('admin.inicio'),
+            'administrador' => redirect()->route('admin.inicio'),
             'tutor'    => redirect()->route('tutor.inicio'),
             'egresado' => redirect()->route('egresado.inicio'),
             'empresa'  => redirect()->route('empresa.inicio'),

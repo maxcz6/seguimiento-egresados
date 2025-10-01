@@ -73,13 +73,16 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'usuario' => 'required|unique:usuario,usuario',
-            'clave'   => 'required|min:6',
+            'usuario' => 'required|string|max:255|unique:usuario,usuario',
+            'dni'     => 'required|string|max:15|unique:usuario,dni',
+            'ruc'     => 'required_if:rol,empresa|string|max:20|unique:usuario,ruc|nullable',
+            'clave'   => 'required|string|min:6',
             'rol'     => 'required|in:egresado,empresa', // solo permites crear estos roles
         ]);
 
         $usuario = new Usuario();
         $usuario->usuario = $request->usuario;
+        $usuario->dni     = $request->dni;
         $usuario->clave   = Hash::make($request->clave);
         $usuario->rol     = $request->rol;
         $usuario->save();

@@ -31,7 +31,7 @@ Route::get('/forgot-password', [AuthController::class, 'showForgot'])->name('pas
 Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 
 // 👨‍💻 ADMIN
-Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.inicio');
     Route::get('/inicio', fn() => view('admin.inicio'))->name('admin.inicio.view');
     Route::get('/usuarios', fn() => view('admin.usuarios'))->name('admin.usuarios');
