@@ -13,15 +13,15 @@ class Usuario extends Authenticatable
 
     // Configuración de la tabla
     protected $table = 'usuario';
-    protected $primaryKey = 'id_usuario';
-    public $timestamps = true;
+    protected $primaryKey = 'id_usuario';   // 👈 asegúrate que este sea el nombre real en tu BD
+    public $timestamps = true;              // ⚠️ pon "false" si tu tabla no tiene created_at / updated_at
 
     // Campos permitidos para asignación masiva
     protected $fillable = [
         'usuario',
         'clave',
         'rol',
-        'dni',   // 👈 añadidos para soportar registro dinámico
+        'dni',   // soportar registro dinámico
         'ruc',
     ];
 
@@ -40,7 +40,8 @@ class Usuario extends Authenticatable
     // Mutador automático para encriptar clave al guardar
     public function setClaveAttribute($value)
     {
-        $this->attributes['clave'] = Hash::make($value);
+        // Evita doble encriptado si ya está hasheada
+        $this->attributes['clave'] = Hash::needsRehash($value) ? Hash::make($value) : $value;
     }
 
     // Validar rol del usuario

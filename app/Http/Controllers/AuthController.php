@@ -33,7 +33,7 @@ class AuthController extends Controller
             'clave'   => 'required|string',
         ]);
 
-        // ⚠️ Importante: Auth espera "password", pero mapeamos a "clave"
+        //  Importante: Auth espera "password", pero mapeamos a "clave"
         if (Auth::attempt([
             'usuario'  => $credentials['usuario'],
             'password' => $credentials['clave'],

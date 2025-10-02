@@ -76,7 +76,7 @@ class UsuarioController extends Controller
             'ruc'     => $validated['ruc'] ?? null,
         ]);
 
-        Auth::login($usuario);
+        Auth::login(user: $usuario);
 
         return $this->redirectBasedOnRole($usuario);
     }
